@@ -1,8 +1,8 @@
 name: app_groups_preferences
 description: A new flutter plugin project.
 version: 0.0.1
-author: Aleksey Goncharov
-homepage:
+author: Aleksey Goncharov x401om@gmail.com
+homepage: https://github.com/x401om/app_groups_preferences.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
