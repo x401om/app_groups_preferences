@@ -10,11 +10,19 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"getPlatformVersion" isEqualToString:call.method]) {
-    result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
+    if ([@"setDouble" isEqualToString:call.method]) {
+      NSDictionary *arguments = call.arguments;
+      NSString *group = arguments[@"group"];
+      NSString *key = arguments[@"key"];
+      NSNumber *value = arguments[@"value"];
+      
+      NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:group];
+      [defaults setDouble:value.doubleValue forKey:key];
+      [defaults synchronize];
   } else {
     result(FlutterMethodNotImplemented);
   }
+
 }
 
 @end
