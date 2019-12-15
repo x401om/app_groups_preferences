@@ -23,7 +23,7 @@ class AppGroupsPreferences {
     final params = Map<String, dynamic>();
     params['group'] = group;
     params['key'] = key;
-    final String value = await _channel.invokeMethod('getString');
+    final String value = await _channel.invokeMethod('getString', params);
     return value;
   }
 }
