@@ -16,4 +16,14 @@ class AppGroupsPreferences {
 
     _channel.invokeMethod('setDouble', params);
   }
+
+  static Future<String> getString(String group, String key) async {
+    if (!Platform.isIOS) return null;
+
+    final params = Map<String, dynamic>();
+    params['group'] = group;
+    params['key'] = key;
+    final String value = await _channel.invokeMethod('getString');
+    return value;
+  }
 }

@@ -19,6 +19,14 @@
       NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:group];
       [defaults setDouble:value.doubleValue forKey:key];
       [defaults synchronize];
+  } if ([@"getString" isEqualToString:call.method]) {
+      NSDictionary *arguments = call.arguments;
+      NSString *group = arguments[@"group"];
+      NSString *key = arguments[@"key"];
+
+      NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:group];
+      NSString *value = [defaults stringForKey:key];
+      result(value);
   } else {
     result(FlutterMethodNotImplemented);
   }
